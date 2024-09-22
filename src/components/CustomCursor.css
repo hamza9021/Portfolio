@@ -1,0 +1,100 @@
+.cursor {
+  pointer-events: none;
+}
+
+.cursor-follower {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  transition: all 0.15s ease-out;
+  z-index: 9999;
+  pointer-events: none;
+  animation: cursorAnim 0.5s infinite alternate;
+}
+
+.cursor-dot {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background-color: #000;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.25s ease-out; /* Increased delay for the dot */
+  z-index: 10000;
+  pointer-events: none;
+}
+
+.cursor--clicked .cursor-follower {
+  transform: translate(-50%, -50%) scale(0.9);
+  background-color: rgba(0, 0, 0, 0.1);
+  animation: expandCursor 0.3s forwards;
+}
+
+.cursor--clicked .cursor-dot {
+  transform: translate(-50%, -50%) scale(2);
+}
+
+.cursor--hidden .cursor-follower,
+.cursor--hidden .cursor-dot {
+  opacity: 0;
+}
+
+.cursor--link-hovered .cursor-follower {
+  transform: translate(-50%, -50%) scale(1.5);
+  background-color: rgba(0, 0, 0, 0.1);
+  border-color: rgba(0, 0, 0, 0);
+  animation: rotateCursor 2s linear infinite;
+}
+
+.cursor--link-hovered .cursor-dot {
+  transform: translate(-50%, -50%) scale(0.5);
+  animation: blinkCursor 1s infinite;
+}
+
+@keyframes cursorAnim {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes expandCursor {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.4);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes rotateCursor {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes blinkCursor {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@media (max-width: 768px) {
+  .cursor-follower,
+  .cursor-dot {
+    display: none;
+  }
+}

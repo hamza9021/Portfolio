@@ -1,0 +1,12 @@
+/* Reset all styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Remove any other styles you might have here */
+
+body {
+  cursor: none; /* Changed from 'default' to 'none' */
+}

@@ -1,0 +1,227 @@
+/* Add these styles at the top of your file */
+html.has-scroll-smooth {
+  overflow: hidden;
+}
+
+html.has-scroll-dragging {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.has-scroll-smooth body {
+  overflow: hidden;
+}
+
+.app {
+  min-height: 100vh;
+  background-color: #ffffff;
+  color: #000000;
+}
+
+main {
+  padding-top: 60px; /* To account for the fixed navbar */
+}
+
+section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  text-align: center;
+}
+
+h1, h2 {
+  margin-bottom: 1rem;
+}
+
+#home h1 {
+  font-size: 4rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  animation: slideUp 0.8s ease-out 0.2s forwards;
+  opacity: 0;
+}
+
+#home p {
+  font-size: 1.5rem;
+  max-width: 600px;
+  line-height: 1.5;
+  animation: slideUp 0.8s ease-out 0.4s forwards;
+  opacity: 0;
+}
+
+#home .social-icons {
+  animation: fadeIn 0.8s ease-out 0.6s forwards;
+  opacity: 0;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes drawUnderline {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.animate-title span {
+  display: block;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-title span:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.animate-title span:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.animate-title::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 3px;
+  background-color: #000000;
+  margin: 10px auto 0;
+  animation: drawUnderline 0.8s ease-out 1s forwards;
+}
+
+.animate-tagline {
+  opacity: 0;
+  animation: fadeIn 1s ease-out 1.5s forwards;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+  #home h1 {
+    font-size: 3rem;
+  }
+
+  #home p {
+    font-size: 1.2rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #home h1 {
+    font-size: 2.5rem;
+  }
+
+  #home p {
+    font-size: 1rem;
+  }
+
+  section {
+    padding: 1rem;
+  }
+}
+
+@media screen and (max-height: 600px) {
+  section {
+    min-height: auto;
+    padding: 3rem 1rem;
+  }
+}
+
+/* Add these styles to your existing App.css */
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.icon-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.icon-link.github {
+  background-color: #333;
+}
+
+.icon-link.linkedin {
+  background-color: #0077b5;
+}
+
+.icon-link:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.icon-link.github:hover {
+  background-color: #2b2b2b;
+}
+
+.icon-link.linkedin:hover {
+  background-color: #006396;
+}
+
+/* Keep your existing media query */
+@media screen and (max-width: 480px) {
+  .social-icons {
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+  }
+}
+
+/* Add these keyframes at the top of your App.css file */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Add this class to animate elements as they come into view */
+.animate-on-scroll {
+  opacity: 0;
+  transition: opacity 0.6s, transform 0.6s;
+}
+
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
